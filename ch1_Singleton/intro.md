@@ -3,6 +3,8 @@ Singleton单例模式
 
 ![cover](./ch1_cover.jpg)
 
+> 经典对白：一即是全，全即是一 《钢之炼金术师》
+
 ### 定义    
 确保一个类只有一个实例，并提供一个全局访问点
 
@@ -38,7 +40,7 @@ Singleton单例模式
 | getInstance 获取/生成实例| 
 
 ### 文章参考
-> https://wiki.jikexueyuan.com/project/javascript-design-patterns/singleton-pattern.html
+> https://wiki.jikexueyuan.com/project/javascript-design-patterns/singleton-pattern.html    
 > https://zhuanlan.zhihu.com/p/34754447
 
 
