@@ -24,7 +24,11 @@ Singleton单例模式
 
 * 不能继承
 * 内部若包含实例生成，则与单一职责原则冲突（模式设计中的妥协）
+
+### 提示
+
 * 需要注意线程安全
+* Javascript不能通过new直接创建对象
 
 ### 类图
 
@@ -32,6 +36,10 @@ Singleton单例模式
 | :-----|
 | uniqueInstance 唯一实例| 
 | getInstance 获取/生成实例| 
+
+### 文章参考
+> https://wiki.jikexueyuan.com/project/javascript-design-patterns/singleton-pattern.html
+> https://zhuanlan.zhihu.com/p/34754447
 
 
 
