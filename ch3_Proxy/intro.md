@@ -5,7 +5,6 @@ Proxy 代理模式
 
 为一个对象提供一个替身或占位符，以便控制对它的访问
 
-
 ![cover](./ch3_cover.jpg)
 
 > 对白：我失去归宿的现实才是我真正的归宿。《妄想代理人》
@@ -36,7 +35,8 @@ Proxy 代理模式
 
 ### 提示
 
-前端开发最常用是虚拟代理和缓存代理
+* 前端开发最常用是虚拟代理和缓存代理
+* 建议直接使用es6的proxy
 
 
 ### 类图
@@ -45,7 +45,8 @@ Proxy 代理模式
 
 ### 参考链接
 
-https://www.runoob.com/design-pattern/proxy-pattern.html
+https://www.runoob.com/design-pattern/proxy-pattern.html        
+https://zhuanlan.zhihu.com/p/40772736
 
 
 
