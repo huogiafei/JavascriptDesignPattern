@@ -45,7 +45,7 @@ window.onload = function(){
         btn.onclick = function(e){
             fetchDataHandle(e.target.dataset.id)
         }
-    })
+    });
 
     let fetch1 = new ProxyFetchData(map.get('A'),'mockA');
     let fetch2 = new ProxyFetchData(map.get('B'),'mockB');
