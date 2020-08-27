@@ -34,10 +34,7 @@ Singleton单例模式
 
 ### 类图
 
-| **Singleton** | 
-| :-----|
-| uniqueInstance 唯一实例| 
-| getInstance 获取/生成实例| 
+![uml](./uml.jpg)
 
 ### 文章参考
 > https://wiki.jikexueyuan.com/project/javascript-design-patterns/singleton-pattern.html    
