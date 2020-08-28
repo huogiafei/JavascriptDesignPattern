@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模拟Vue的渲染流程</title>
+</head>
+<body id="app">
+<h1>{{title}}</h1>
+<button id="btn">Change Title</button>
+</body>
+<script>
+    class Template {
+        constructor({root, data}) {
+            this.root = document.querySelector(root);
+            this.data = data;
+            this.renderInit();
+        }
+
+        reg = /^{{.*}}$/g;
+
+        renderInit() {
+            this.traverseNodes(this.root, function (node) {
+                let nodeText = node.innerText;
+                const array = nodeText.match(this.reg);
+                array.forEach(item => {
+                    const key = item.substring(2, nodeText.length - 2);
+                    if (key in this.data) {
+                        this.render(node, this.data[key]);
+                        this.observer(key, (value) => {
+                            this.render(node, value)
+                        });
+                    }
+                })
+
+            })
+        }
+
+        traverseNodes(node, fn) {
+            if (node.nodeType === 1) {
+                if (node.hasChildNodes()) {
+                    if (this.reg.test(node.innerText)) {
+                        console.log('node', node);
+                        Array.prototype.unshift.call(arguments, node);
+                        fn.apply(this, arguments);
+                    }
+
+                    let childNodes = node.childNodes;
+                    childNodes.forEach((node, i) => {
+                        this.traverseNodes(childNodes.item(i), fn)
+                    });
+                }
+            }
+        }
+
+        observer(key, fn) {
+            let value = this.data[key];
+            Object.defineProperty(this.data, key, {
+                get() {
+                    return value;
+                },
+                set(v) {
+                    value = v;
+                    fn(v);
+                }
+            })
+        }
+
+        render(node, text) {
+            node.innerText = text
+        }
+    }
+
+    const app = new Template({
+        root: '#app',
+        data: {
+            title: 'Abc'
+        }
+    })
+
+    document.querySelector('#btn')
+        .addEventListener('click', function () {
+            app.data.title = 'HKS'
+        })
+</script>
+</html>
+

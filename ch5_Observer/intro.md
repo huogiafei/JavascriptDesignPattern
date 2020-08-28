@@ -15,7 +15,7 @@ Observer 观察者模式
 ### 场景
 
 * ajax异步请求的成功回调
-* 点击事件onclick
+* DOM的事件绑定
 
 ### 优点
 
@@ -36,8 +36,11 @@ Observer 观察者模式
 
 ### 参考链接
 
-https://www.runoob.com/design-pattern/observer-pattern.html
-https://juejin.im/post/6844903556714070024
+> https://www.runoob.com/design-pattern/observer-pattern.html
+> https://juejin.im/post/6844903556714070024  
+> https://juejin.im/post/6844903858850758670 Vue响应式原理  
+> https://juejin.im/post/6844903556714070024 《从vue源码看观察者模式》
+> https://juejin.im/post/6844903710410162183 《ES6 系列之 defineProperty 与 proxy》
 
 
 

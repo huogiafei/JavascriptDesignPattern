@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>defineProperty改进版</title>
+</head>
+<body>
+<h1 id="num"></h1>
+<p id="letter"></p>
+<button id="btn">+</button>
+
+<script>
+    //上一个demo有个问题，就是每个变量需要单独保存
+    //可以继续优化，通过添加Observer来添加订阅者
+    let data = {
+        num: 0,
+        letterCode: 64
+    };
+
+    (function () {
+        const root = this;
+
+        function observer(obj, key, fn) {
+            let value = obj[key];
+
+            Object.defineProperty(obj, key, {
+                get() {
+                    return value;
+                },
+                set(v) {
+                    value = v;
+                    fn(v);
+                }
+            })
+        }
+
+        this.observer = observer
+    }());
+
+    observer(data, 'num', (newValue) => document.querySelector('#num').innerHTML = newValue);
+    observer(data, 'letterCode', (newValue) => document.querySelector('#letter').innerHTML = String.fromCharCode(newValue));
+
+    //Client
+    const $btn = document.querySelector('#btn');
+    $btn.addEventListener('click', () => {
+        data.num += 1;
+        data.letterCode += 1;
+    })
+</script>
+</body>
+</html>
+
