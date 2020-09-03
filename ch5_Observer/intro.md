@@ -19,16 +19,18 @@ Observer 观察者模式
 
 ### 优点
 
-* 观察者（Observer）与被观察者（Subject）是抽象耦合
+* 观察者（Observer）与被观察者（Subject）是抽象耦合(时间上和对象之间都解耦了)
 * 建立一套触发机制，容易扩展
 
 ### 缺点
 
-* 通知太多观察者会耗费一定的时间
+* 消耗一定的时间和内存
 * 两者之间有循环依赖的话，会导致系统崩溃
 * 观察者不能了解目标如何发生变化
 
 ### 提示
+
+Javascript实现观察者模式用回调函数会更加适合，这点和Java的实现有点不一样
 
 ### 类图
 
@@ -39,7 +41,7 @@ Observer 观察者模式
 > https://www.runoob.com/design-pattern/observer-pattern.html   
 > https://juejin.im/post/6844903556714070024    
 > https://juejin.im/post/6844903858850758670 Vue响应式原理   
-> https://juejin.im/post/6844903556714070024 《从vue源码看观察者模式》 
+> https://juejin.im/post/6844903556714070024 《从vue源码看观察者模式》     
 > https://juejin.im/post/6844903710410162183 《ES6 系列之 defineProperty 与 proxy》   
 > https://juejin.im/post/6844903601416978439    
 
