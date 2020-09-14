@@ -9,14 +9,14 @@ Function.prototype.before = function (beforeFn) {
     let _self = this;
     return function () {
         beforeFn.apply(this, arguments);
-        return _self.apply(_self, arguments);
+        return _self.apply(this, arguments);
     }
 };
 
 Function.prototype.after = function (afterFn) {
     let _self = this;
     return function () {
-        let result = _self.apply(_self, arguments);
+        let result = _self.apply(this, arguments);
         afterFn.apply(this, arguments);
         return result;
     }

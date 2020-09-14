@@ -1,0 +1,47 @@
+html {
+    color: #ddd;
+}
+
+body {
+    background-color: #f3fffa;
+}
+
+.title {
+    font-family: Helvetica, sans-serif;
+    color: #336e67;
+    font-weight: bold;
+    font-size: 64px;
+    background-color: #5f8d7a !important;
+    margin: 30px 0;
+}
+
+.wrapper {
+    width: 400px;
+    height: 300px;
+    margin: 100px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.player-bg {
+    width: 360px;
+    height: 200px;
+}
+
+.btn {
+    width: 140px;
+    height: 50px;
+    line-height: 50px;
+    background-color: #4283ff;
+    color: #fff;
+    font-weight: bold;
+    border: 6px solid #444;
+    border-radius: 50px;
+    text-shadow: 1px 1px 2px #ddd;
+    margin: 30px auto;
+    text-align: center;
+    font-size: 24px;
+    cursor: pointer;
+
+}
