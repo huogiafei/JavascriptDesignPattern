@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>printing</title>
+    <style>
+        .wrapper {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .letter {
+            font-size: 36px;
+            font-family: "Courier New", sans-serif;
+            padding: 6px;
+            color: #555;
+        }
+
+        .space {
+            margin: 0 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper" id="wrapper">
+
+</div>
+
+
+<script>
+    class Letter {
+        constructor(letter) {
+            this.key = letter
+        }
+
+        render() {
+            const spaceReg = /\s/;
+            let dom = document.createElement('div');
+            dom.classList.add(spaceReg.test(this.key) ? 'space' : 'letter');
+            dom.innerText = this.key;
+            return dom.outerHTML
+        }
+    }
+
+    //print 'Hello World'
+    let letterFactory = (function () {
+        let createdLetters = new Map();
+
+        return {
+            create(letter) {
+                if (!createdLetters.has(letter)) {
+                    createdLetters.set(letter, new Letter(letter))
+                }
+                return createdLetters.get(letter)
+            },
+
+            getLetterKeys() {
+                return Array.from(createdLetters.keys());
+            }
+        }
+    })();
+
+    function print(content, parent = document) {
+        let html = '';
+        const letters = Array.from(content);
+        letters.forEach(item => {
+            console.log(letterFactory.create(item))
+            let letterObj = letterFactory.create(item);
+            html += letterObj.render();
+        });
+        parent.insertAdjacentHTML('beforeend', html);
+    }
+
+    const printContent = 'Hello World';
+    const wrapper = document.querySelector('#wrapper');
+    print(printContent, wrapper);
+    console.log(letterFactory.getLetterKeys())
+
+
+</script>
+</body>
+</html>
