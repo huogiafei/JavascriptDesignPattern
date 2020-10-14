@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Input Validate</title>
+</head>
+<body>
+<form id="form">
+    email: <input type="text" id="email">
+    <button type="submit">submit</button>
+</form>
+
+<script type="module">
+    import {checkEmail, checkExistEmail} from "./validate.js";
+
+    Function.prototype.addValidateChain = function (fn) {
+        const self = this;
+        return function () {
+            const res = self.apply(this, arguments);
+            if (res === true) {
+                return fn.apply(this, arguments);
+            }
+            return res;
+        }
+    };
+
+    window.onload = function () {
+        const form = document.querySelector('#form');
+        form.addEventListener('submit', (event) => {
+            event.preventDefault()
+            const email = document.querySelector('#email').value;
+            const validateEmail = checkEmail.addValidateChain(checkExistEmail);//责任链
+            const result = validateEmail(email);
+            console.log(result)
+        })
+    };
+</script>
+
+</body>
+</html>
